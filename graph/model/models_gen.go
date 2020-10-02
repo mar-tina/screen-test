@@ -14,10 +14,18 @@ type Customer struct {
 	Orders      []*Order `json:"orders"`
 }
 
+type Item struct {
+	Name string `json:"name"`
+}
+
+type ItemInput struct {
+	Name string `json:"name"`
+}
+
 type Order struct {
 	ID              string    `json:"id"`
 	Customer        *Customer `json:"customer"`
-	Item            []string  `json:"item"`
+	Item            []*Item   `json:"item"`
 	Price           float64   `json:"price"`
 	DateOrderPlaced time.Time `json:"date_order_placed"`
 }
@@ -29,7 +37,7 @@ type CustomerInput struct {
 }
 
 type OrderInput struct {
-	Item            []string  `json:"item"`
-	Price           float64   `json:"price"`
-	DateOrderPlaced time.Time `json:"date_order_placed"`
+	Item            []*ItemInput `json:"item"`
+	Price           float64      `json:"price"`
+	DateOrderPlaced time.Time    `json:"date_order_placed"`
 }

@@ -17,7 +17,7 @@ type Order {
   id: ID!
   # Somewhat A relationship to the customer type
   customer: Customer!
-  item: [String!]!
+  item: [Item!]!
   price: Float!
   date_order_placed: Time!
 }
@@ -33,8 +33,16 @@ input customerInput {
   Email: String!
 }
 
+type Item {
+  name: String!
+}
+
+input ItemInput {
+  name: String!
+}
+
 input orderInput {
-  item: [String!]!
+  item: [ItemInput]!
   price: Float!
   date_order_placed: Time!
 }
@@ -43,3 +51,4 @@ type Mutation {
   createCustomer(input: customerInput!): Customer!
   createOrder(input: orderInput!): Order!
 }
+
